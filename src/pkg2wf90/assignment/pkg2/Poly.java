@@ -102,4 +102,16 @@ public class Poly {
         }
         return result;
     }
+    
+    Boolean equals(Poly g){
+        if(g.degree() != this.degree()){
+            return false;
+        }
+        for(int i = 0; i <= g.degree(); i++){
+            if(g.getPoly()[i].getVal() != poly[i].getVal()){
+                return false;
+            }
+        }
+        return true;
+    }
 }
