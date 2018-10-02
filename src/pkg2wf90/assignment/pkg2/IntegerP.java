@@ -41,7 +41,7 @@ public class IntegerP {
     
     /**
      * subtracts val 2 from this IntegerP
-     * @param val2 number to be subtracted
+     * @param val2 number to be subtracted by
      */
     void subtract(IntegerP val2){
         if((this.val - val2.getVal())<0){
@@ -51,5 +51,15 @@ public class IntegerP {
         }
     }
     
-    
+    /**
+     * multiplies this InteregerP by val2
+     * @param val2 the number to be mulitplied with
+     */
+    void mult(IntegerP val2){
+        if((this.val * val2.getVal())<0){
+            this.val = (this.val * val2.getVal())%mod + mod;
+        } else {
+            this.val = (this.val * val2.getVal())%mod;
+        }
+    }
 }
