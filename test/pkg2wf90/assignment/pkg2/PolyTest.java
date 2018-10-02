@@ -85,13 +85,22 @@ public class PolyTest {
     @Test
     public void testMultiply() {
         System.out.println("multiply");
-        Poly g = null;
-        Poly instance = null;
-        Poly expResult = null;
+        Poly g = new Poly(new int[]{1,1,1}, 10);
+        Poly instance = new Poly(new int[]{2,2}, 10);
+        
+        Poly expResult = new Poly(new int[]{2,4,4,2}, 10);
+        for(IntegerP a : expResult.getPoly()){
+            System.out.print(a.getVal() + " ");
+        }
+        System.out.println();
         Poly result = instance.multiply(g);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for(IntegerP a : result.getPoly()){
+            System.out.print(a.getVal() + " ");
+        }
+        System.out.println();
+        for(int i = 0; i <= expResult.degree(); i++){
+            assertEquals(result.getPoly()[i].getVal(), expResult.getPoly()[i].getVal());
+        }
     }
 
     /**
@@ -114,12 +123,11 @@ public class PolyTest {
     @Test
     public void testDegree() {
         System.out.println("degree");
-        Poly instance = null;
-        int expResult = 0;
+        Poly instance = new Poly(new int[]{0,0,0,0,1,2,3}, 10);
+        int expResult = 2;
         int result = instance.degree();
+        System.out.println(result);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -128,7 +136,7 @@ public class PolyTest {
     @Test
     public void testEquals() {
         System.out.println("equals");
-        Poly g = null;
+        Poly g = new Poly(new int[]{1,2,3},10);
         Poly instance = null;
         Boolean expResult = null;
         Boolean result = instance.equals(g);
