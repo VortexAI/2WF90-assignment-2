@@ -50,4 +50,8 @@ public class IntegerP {
     IntegerP mult(IntegerP val2){
         return new IntegerP(this.val * val2.getVal(), mod);
     }
+    
+    int getMod(){
+        return mod;
+    }
 }

@@ -116,4 +116,8 @@ public class Poly {
         }
         return true;
     }
+    
+    int getMod(){
+        return mod;
+    }
 }

@@ -10,5 +10,6 @@ package pkg2wf90.assignment.pkg2;
  * @author s151810
  */
 public abstract class PolyFunc extends Function{
-    
+    @Override
+    abstract Poly run();
 }
