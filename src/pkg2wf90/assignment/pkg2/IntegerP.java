@@ -6,7 +6,7 @@
 package pkg2wf90.assignment.pkg2;
 
 /**
- *
+ * 
  * @author s151810
  */
 public class IntegerP {
