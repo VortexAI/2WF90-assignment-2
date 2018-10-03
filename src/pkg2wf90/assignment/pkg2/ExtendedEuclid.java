@@ -9,19 +9,19 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author Th3LightShadow
  */
-public class ExtendedEuclid extends PolyFunc{
+public abstract class ExtendedEuclid extends PolyFunc{
     
     Poly[] run(Poly f, Poly g) {
         LongDivision division = new LongDivision();
         
         Poly q;
         Poly r;
-        Poly x = new Poly(new int[]{1},f.mod());
+        Poly x = new Poly(new int[]{1},f.getMod());
         Poly xPrime;
-        Poly y = new Poly(new int[]{0},f.mod());;;
+        Poly y = new Poly(new int[]{0},f.getMod());
         Poly yPrime;
-        Poly v = new Poly(new int[]{1},f.mod());
-        Poly u = new Poly(new int[]{0},f.mod());;;
+        Poly v = new Poly(new int[]{1},f.getMod());
+        Poly u = new Poly(new int[]{0},f.getMod());
                
         while (!g.equals(0)) {
             q = division.run(f,g)[0];

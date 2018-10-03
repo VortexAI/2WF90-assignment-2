@@ -9,7 +9,7 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author Th3LightShadow
  */
-public class LongDivision extends PolyFunc{
+public abstract class LongDivision extends PolyFunc{
     
     Poly[] run(Poly f, Poly g){
         
@@ -18,9 +18,9 @@ public class LongDivision extends PolyFunc{
         Poly r = f;
         
         while (r.degree() >= g.degree()) {
-            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.mod);
+            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.getMod());
             q = q + tempPoly.multiply(r.leadingCoefficient()/f.leadingCoefficient());
-            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.mod);
+            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.getMod());
             r = r - g.multiply(tempPoly.multiply(r.leadingCoefficient()/f.leadingCoefficient()));
         }
         Poly[] result = new Poly[]{q,r};
