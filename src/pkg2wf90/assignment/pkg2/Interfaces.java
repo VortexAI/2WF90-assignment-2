@@ -9,6 +9,10 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author s151810
  */
-public abstract class Function<A,B> {
+public class Interfaces {
+    
+}
+
+interface Function<A,B>{
     abstract A[] run(B[] b);
 }
