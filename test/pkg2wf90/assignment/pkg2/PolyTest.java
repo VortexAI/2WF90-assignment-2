@@ -145,4 +145,13 @@ public class PolyTest {
         fail("The test case is a prototype.");
     }
     
+    @Test
+    public void testDisplay(){
+        System.out.println("display");
+        Poly g = new Poly(new int[]{1,2,3},10);
+        String result = "X^2+2X+3";
+        System.out.println(g.display());
+        assertEquals(g.display(), result);
+    }
+    
 }

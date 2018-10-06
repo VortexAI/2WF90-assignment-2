@@ -9,6 +9,6 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author s151810
  */
-public abstract class Function<A> {
-    abstract A run();
+public abstract class Function<A,B> {
+    abstract A[] run(B[] b);
 }

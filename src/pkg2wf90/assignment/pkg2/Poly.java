@@ -79,9 +79,11 @@ public class Poly {
             temp[i] = new IntegerP(0, mod);
         }
         
+        int degG = g.degree();
+        int deg = this.degree();
         
-        for(int i = 0; i <= this.degree(); i++){
-            for(int j = 0; j <= g.degree(); j++){
+        for(int i = 0; i <= deg; i++){
+            for(int j = 0; j <= degG; j++){
                 temp[i+j] = temp[i+j].add(g.getPoly()[j].mult(poly[i]));
                 System.out.println("current value of temp: " + temp[i+j].getVal());
             }
@@ -106,10 +108,11 @@ public class Poly {
     }
     
     Boolean equals(Poly g){
+        int degG = g.degree();
         if(g.degree() != this.degree()){
             return false;
         }
-        for(int i = 0; i <= g.degree(); i++){
+        for(int i = 0; i <= degG; i++){
             if(g.getPoly()[i].getVal() != poly[i].getVal()){
                 return false;
             }
@@ -119,5 +122,37 @@ public class Poly {
     
     int getMod(){
         return mod;
+    }
+    
+    String display(){
+        int deg = degree();
+        boolean firstNotNull = false;
+        String result = null;
+        for(int i = 0; i<=deg; i++){
+            if(poly[i].getVal()!=0 && !firstNotNull){
+                if (i==0){
+                    result = poly[i].getVal() + "";
+                } else if(i==1 && poly[i].getVal()!=1){
+                    result = poly[i].getVal() + "X";
+                } else if(i==1 && poly[i].getVal()==1){
+                    result = "X";
+                } else if(i>1 && poly[i].getVal()==1){
+                    result = "X^" + i;
+                } else {
+                    result = poly[i].getVal() + "X^" + i;
+                }
+            } else if(poly[i].getVal()!=0 && firstNotNull){
+                if(i==1 && poly[i].getVal()!=1){
+                    result = poly[i].getVal() + "X";
+                } else if(i==1 && poly[i].getVal()==1){
+                    result = "X";
+                } else if(i>1 && poly[i].getVal()==1){
+                    result = "X^" + i + "+" + result;
+                } else {
+                    result = poly[i].getVal() + "X^" + i + "+" + result;
+                }
+            }
+        }
+        return result;
     }
 }
