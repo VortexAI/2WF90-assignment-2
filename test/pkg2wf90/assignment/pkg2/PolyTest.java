@@ -148,8 +148,8 @@ public class PolyTest {
     @Test
     public void testDisplay(){
         System.out.println("display");
-        Poly g = new Poly(new int[]{1,2,3},10);
-        String result = "X^2+2X+3";
+        Poly g = new Poly(new int[]{2,0,5},10);
+        String result = "2X^2+5";
         System.out.println(g.display());
         assertEquals(g.display(), result);
     }

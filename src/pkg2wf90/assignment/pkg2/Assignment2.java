@@ -53,35 +53,65 @@ public class Assignment2 {
                 
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 String Assignment = sc.nextLine();
+                
                 if(!Assignment.equals("[mod-poly]")){//polynomial opperations
                     
+                    Poly f = null;
+                    Poly g = null;
+                    Poly h = null;
+                    
+                    a = sc.nextLine();
+                    while(sc.hasNext() || !a.trim().isEmpty()){
+                        if(a.startsWith("[f]")){
+                            String fx = a.split(" ")[a.split(" ").length-1];
+                            int[] pol = new int[(fx.length()-1)/2];
+                            for(int i = 1; i < fx.length(); i = i+2){
+                                pol[(i-1)/2] = Character.getNumericValue(fx.charAt(i));
+                            }
+                            f = new Poly(pol, mod);
+                        } else if (a.startsWith("[g]")){
+                            String gx = a.split(" ")[a.split(" ").length-1];
+                            int[] pol = new int[(gx.length()-1)/2];
+                            for(int i = 1; i < gx.length(); i = i+2){
+                                pol[(i-1)/2] = Character.getNumericValue(gx.charAt(i));
+                            }
+                            g = new Poly(pol, mod);
+                        } else if (a.startsWith("[h]")){
+                            String hx = a.split(" ")[a.split(" ").length-1];
+                            int[] pol = new int[(hx.length()-1)/2];
+                            for(int i = 1; i < hx.length(); i = i+2){
+                                pol[(i-1)/2] = Character.getNumericValue(hx.charAt(i));
+                            }
+                            h = new Poly(pol, mod);
+                        }
+                    }
+                    
+                    
                     if(Assignment.equals("[display-poly]")){
+                        br.write("[answer] " + f.display() + System.getProperty("line.separator"));
+                    } else if (Assignment.equals("[add-poly]")){
+                        br.write("[answer] " + (f.add(g)).display() + System.getProperty("line.separator"));
+                    } else if (Assignment.equals("[subtract-poly]")){
+                        br.write("[answer] " + (f.subtract(g)).display() + System.getProperty("line.separator"));
+                    } else if (Assignment.equals("[multiply-poly]")){
+                        br.write("[answer] " + (f.multiply(g)).display());
+                    } else if (Assignment.equals("[long-div-poly")){
+                        func = new LongDivision();
+                    } else if (Assignment.equals("[euclid-poly]")){
+                        func = new ExtendedEuclid();
+                    } else if (Assignment.equals("[equals-poly-mod]")){
+                        func = new polyEqualMod();
+                    } else if (Assignment.equals("[irreducible]")){
                         
-                    } 
+                    } else if (Assignment.equals("[find-irred]")){
+                        
+                    }
                     
                     
                 } else { //finite field operations
                     
                 }
-                //create instance of the correct function
-                /*if(Assignment.equals("[add]")){
-                    func = new AddSub(true);    
-                } else if(Assignment.equals("[subtract]")){
-                    func = new AddSub(false);
-                } else if(Assignment.equals("[multiply]")){
-                    func = new EzMult();
-                } else if(Assignment.equals("[karatsuba]")){
-                    func = new Karatsuba();
-                } else if(Assignment.equals("[reduce]")) {
-                    func = new Reduce();
-                } else if(Assignment.equals("[inverse]")){
-                    func = new Invert();
-                } else if (Assignment.equals("[euclid]")){
-                    func = new Euclid();
-                } else {
-                    br.write("wrong assignment given" +System.getProperty("line.separator") + System.getProperty("line.separator"));
-                }
-                
+                /*
                 if(func != null){
                     br.write(Assignment + System.getProperty("line.separator"));
                     a = sc.nextLine();

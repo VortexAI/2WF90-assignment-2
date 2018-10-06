@@ -132,20 +132,25 @@ public class Poly {
             if(poly[i].getVal()!=0 && !firstNotNull){
                 if (i==0){
                     result = poly[i].getVal() + "";
+                    firstNotNull = true;
                 } else if(i==1 && poly[i].getVal()!=1){
                     result = poly[i].getVal() + "X";
+                    firstNotNull = true;
                 } else if(i==1 && poly[i].getVal()==1){
                     result = "X";
+                    firstNotNull = true;
                 } else if(i>1 && poly[i].getVal()==1){
                     result = "X^" + i;
+                    firstNotNull = true;
                 } else {
                     result = poly[i].getVal() + "X^" + i;
+                    firstNotNull = true;
                 }
             } else if(poly[i].getVal()!=0 && firstNotNull){
                 if(i==1 && poly[i].getVal()!=1){
-                    result = poly[i].getVal() + "X";
+                    result = poly[i].getVal() + "X+" + result;
                 } else if(i==1 && poly[i].getVal()==1){
-                    result = "X";
+                    result = "X+" + result;
                 } else if(i>1 && poly[i].getVal()==1){
                     result = "X^" + i + "+" + result;
                 } else {
