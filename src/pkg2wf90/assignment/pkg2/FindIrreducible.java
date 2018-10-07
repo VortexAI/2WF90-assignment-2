@@ -25,7 +25,11 @@ public class FindIrreducible {
             answer = new Poly(random, mod);
             return irreducible.run(answer);
         } else {
-            for (int j = 0; j < mod; j++) {
+            int k = 0;
+            if (i == degree) { // make sure that it has the correct degree
+                k = 1;
+            }
+            for (int j = k; j < mod; j++) {
                 random[i] = j;
                 if (findIrr(random, i, mod, degree)) {
                     return true;
