@@ -22,7 +22,7 @@ public class Irreducible {
         Poly polyOne = new Poly(one, q);
         while (true) {
             qt = q * qt;
-            int[] temp = new int[qt];
+            int[] temp = new int[qt + 1];
             temp[qt] = 1;
             temp[1] = temp[1] - 1;
             Poly gcd = EE.run(f, new Poly(temp, q))[0];

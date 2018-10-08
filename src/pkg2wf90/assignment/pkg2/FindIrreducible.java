@@ -15,7 +15,7 @@ public class FindIrreducible {
     
     Poly run(int mod, int degree) {
         // Add test whether degree n > 0?
-        int[] random = new int[degree];
+        int[] random = new int[degree + 1];
         findIrr(random, 0, mod, degree);
         return answer;
     }
