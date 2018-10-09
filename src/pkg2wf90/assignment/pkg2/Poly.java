@@ -74,7 +74,6 @@ public class Poly {
     
     Poly multiply(Poly g){
         IntegerP[] temp = new IntegerP[1+g.degree()+this.degree()];
-        System.out.println("length: " + temp.length);
         for(int i = 0; i<temp.length;i++){
             temp[i] = new IntegerP(0, mod);
         }
@@ -85,7 +84,6 @@ public class Poly {
         for(int i = 0; i <= deg; i++){
             for(int j = 0; j <= degG; j++){
                 temp[i+j] = temp[i+j].add(g.getPoly()[j].mult(poly[i]));
-                System.out.println("current value of temp: " + temp[i+j].getVal());
             }
         }
         return new Poly(temp, mod);
