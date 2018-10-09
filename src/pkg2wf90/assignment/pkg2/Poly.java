@@ -158,6 +158,9 @@ public class Poly {
                 }
             }
         }
+        if(!firstNotNull){
+            return "0";
+        }
         return result;
     }
 }

@@ -67,9 +67,11 @@ public class Assignment2 {
                             a = a.substring(3);
                             String fx = a.trim();
                             fx = fx.substring(1, fx.length()-1);
+                            br.write("length of fx is " +fx.length());
                             String[] fxs = fx.split(",");
                             int[] pol = new int[fxs.length];
                             if(fx.length() == 0){
+                                pol = new int[1];
                                 pol[0] = 0;
                             } else {
                                 for(int i = 0; i < fxs.length; i++){
