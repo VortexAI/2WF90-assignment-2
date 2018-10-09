@@ -49,8 +49,9 @@ public class Assignment2 {
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
                 
+                a = a.replace("\t", " ");
+                mod = Integer.parseInt(a.split("\t")[a.split("\t").length-1]);
                 
-                mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 String Assignment = sc.nextLine();
                 
                 if(!Assignment.equals("[mod-poly]")){//polynomial opperations
