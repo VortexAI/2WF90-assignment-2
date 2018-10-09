@@ -9,7 +9,7 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author Th3LightShadow
  */
-public abstract class polyEqualMod extends PolyFunc{
+public class polyEqualMod{
     
     boolean run(Poly f, Poly g, Poly h) {
         LongDivision division = new LongDivision();

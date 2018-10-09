@@ -49,7 +49,6 @@ public class Assignment2 {
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
                 
-                Function func = null;
                 
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 String Assignment = sc.nextLine();
@@ -88,22 +87,48 @@ public class Assignment2 {
                     
                     
                     if(Assignment.equals("[display-poly]")){
+                        
                         br.write("[answer] " + f.display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if (Assignment.equals("[add-poly]")){
+                        
                         br.write("[answer] " + (f.add(g)).display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if (Assignment.equals("[subtract-poly]")){
+                        
                         br.write("[answer] " + (f.subtract(g)).display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if (Assignment.equals("[multiply-poly]")){
-                        br.write("[answer] " + (f.multiply(g)).display());
+                        
+                        br.write("[answer] " + (f.multiply(g)).display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if (Assignment.equals("[long-div-poly")){
-                        func = new LongDivision();
+                        
+                        LongDivision div = new LongDivision();
+                        Poly[] result = div.run(f, g);
+                        br.write("[answer-q] " + result[0].display() + System.getProperty("line.separator"));
+                        br.write("[answer-q] " + result[1].display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if (Assignment.equals("[euclid-poly]")){
-                        func = new ExtendedEuclid();
+                        
+                        ExtendedEuclid func = new ExtendedEuclid();
+                        
                     } else if (Assignment.equals("[equals-poly-mod]")){
-                        func = new polyEqualMod();
+                        
+                        polyEqualMod func = new polyEqualMod();
+                        
                     } else if (Assignment.equals("[irreducible]")){
                         
+                        
+                        
                     } else if (Assignment.equals("[find-irred]")){
+                        
+                        
                         
                     }
                     

@@ -9,7 +9,7 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author Th3LightShadow
  */
-public abstract class LongDivision extends PolyFunc{
+public class LongDivision{
     
     Poly[] run(Poly f, Poly g){
         
