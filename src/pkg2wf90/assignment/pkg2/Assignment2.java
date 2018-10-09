@@ -64,23 +64,32 @@ public class Assignment2 {
                     while(sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[f]")){
                             String fx = a.split(" ")[a.split(" ").length-1];
-                            int[] pol = new int[(fx.length()-1)/2];
-                            for(int i = 1; i < fx.length(); i = i+2){
-                                pol[(i-1)/2] = Character.getNumericValue(fx.charAt(i));
+                            fx = fx.replace("{", ",");
+                            fx = fx.replace("}", ",");
+                            String[] fxs = fx.split(",");
+                            int[] pol = new int[fxs.length];
+                            for(int i = 0; i < fxs.length; i++){
+                                pol[i] = Integer.parseInt(fxs[i]);
                             }
                             f = new Poly(pol, mod);
                         } else if (a.startsWith("[g]")){
                             String gx = a.split(" ")[a.split(" ").length-1];
-                            int[] pol = new int[(gx.length()-1)/2];
-                            for(int i = 1; i < gx.length(); i = i+2){
-                                pol[(i-1)/2] = Character.getNumericValue(gx.charAt(i));
+                            gx = gx.replace("{", ",");
+                            gx = gx.replace("}", ",");
+                            String[] gxs = gx.split(",");
+                            int[] pol = new int[gxs.length];
+                            for(int i = 0; i < gxs.length; i++){
+                                pol[i] = Integer.parseInt(gxs[i]);
                             }
                             g = new Poly(pol, mod);
                         } else if (a.startsWith("[h]")){
                             String hx = a.split(" ")[a.split(" ").length-1];
-                            int[] pol = new int[(hx.length()-1)/2];
-                            for(int i = 1; i < hx.length(); i = i+2){
-                                pol[(i-1)/2] = Character.getNumericValue(hx.charAt(i));
+                            hx = hx.replace("{", ",");
+                            hx = hx.replace("}", ",");
+                            String[] hxs = hx.split(",");
+                            int[] pol = new int[hxs.length];
+                            for(int i = 0; i < hxs.length; i++){
+                                pol[i] = Integer.parseInt(hxs[i]);
                             }
                             h = new Poly(pol, mod);
                         }
