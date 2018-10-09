@@ -63,6 +63,7 @@ public class Assignment2 {
                     a = sc.nextLine();
                     while(sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[f]")){
+                            a.replace("\t", " ");
                             String fx = a.split(" ")[a.split(" ").length-1];
                             fx = fx.replace("{", ",");
                             fx = fx.replace("}", ",");
@@ -73,6 +74,7 @@ public class Assignment2 {
                             }
                             f = new Poly(pol, mod);
                         } else if (a.startsWith("[g]")){
+                            a.replace("\t", " ");
                             String gx = a.split(" ")[a.split(" ").length-1];
                             gx = gx.replace("{", ",");
                             gx = gx.replace("}", ",");
@@ -83,6 +85,7 @@ public class Assignment2 {
                             }
                             g = new Poly(pol, mod);
                         } else if (a.startsWith("[h]")){
+                            a.replace("\t", " ");
                             String hx = a.split(" ")[a.split(" ").length-1];
                             hx = hx.replace("{", ",");
                             hx = hx.replace("}", ",");
