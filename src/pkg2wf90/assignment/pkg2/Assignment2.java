@@ -139,7 +139,7 @@ public class Assignment2 {
                         br.write("[answer] " + (f.multiply(g)).display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
-                    } else if (Assignment.equals("[long-div-poly")){
+                    } else if (Assignment.equals("[long-div-poly]")){
                         
                         LongDivision div = new LongDivision();
                         Poly[] result = div.run(f, g);
