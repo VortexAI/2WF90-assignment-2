@@ -48,13 +48,11 @@ public class Assignment2 {
             if(a.startsWith("[mod]")){ 
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
-                
-                System.out.println(a);
                 a = a.replace("\t", " ");
-                System.out.println(a);
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 
                 String Assignment = sc.nextLine();
+                br.write(Assignment + System.getProperty("line.separator"));
                 
                 if(!Assignment.equals("[mod-poly]")){//polynomial opperations
                     
@@ -63,7 +61,7 @@ public class Assignment2 {
                     Poly h = null;
                     
                     a = sc.nextLine();
-                    System.out.println(a);
+                    br.write(a + System.getProperty("line.separator"));
                     while(!sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[f]")){
                             a = a.substring(3);
@@ -112,7 +110,7 @@ public class Assignment2 {
                         }
                         if(sc.hasNext()){
                             a = sc.nextLine();
-                        
+                            br.write(a + System.getProperty("line.separator"));
                         } else {
                         break;
                         }
