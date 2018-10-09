@@ -49,7 +49,9 @@ public class Assignment2 {
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
                 
+                System.out.println(a);
                 a = a.replace("\t", " ");
+                System.out.println(a);
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 
                 String Assignment = sc.nextLine();
@@ -61,40 +63,58 @@ public class Assignment2 {
                     Poly h = null;
                     
                     a = sc.nextLine();
-                    while(sc.hasNext() || !a.trim().isEmpty()){
+                    System.out.println(a);
+                    while(!sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[f]")){
-                            a.replace("\t", " ");
-                            String fx = a.split(" ")[a.split(" ").length-1];
-                            fx = fx.replace("{", ",");
-                            fx = fx.replace("}", ",");
+                            a = a.substring(3);
+                            String fx = a.trim();
+                            fx = fx.substring(1, fx.length()-1);
                             String[] fxs = fx.split(",");
                             int[] pol = new int[fxs.length];
-                            for(int i = 0; i < fxs.length; i++){
-                                pol[i] = Integer.parseInt(fxs[i]);
+                            if(fx.length() == 0){
+                                pol[0] = 0;
+                            } else {
+                                for(int i = 0; i < fxs.length; i++){
+                                    pol[i] = Integer.parseInt(fxs[i]);
+                                }
                             }
                             f = new Poly(pol, mod);
                         } else if (a.startsWith("[g]")){
-                            a.replace("\t", " ");
-                            String gx = a.split(" ")[a.split(" ").length-1];
-                            gx = gx.replace("{", ",");
-                            gx = gx.replace("}", ",");
+                            a = a.substring(3);
+                            String gx = a.trim();
+                            gx = gx.substring(1, gx.length()-1);
                             String[] gxs = gx.split(",");
                             int[] pol = new int[gxs.length];
-                            for(int i = 0; i < gxs.length; i++){
-                                pol[i] = Integer.parseInt(gxs[i]);
+                            if(gx.length() == 0){
+                                pol[0] = 0;
+                            } else {
+                                for(int i = 0; i < gxs.length; i++){
+                                    pol[i] = Integer.parseInt(gxs[i]);
+                                }
                             }
                             g = new Poly(pol, mod);
                         } else if (a.startsWith("[h]")){
-                            a.replace("\t", " ");
-                            String hx = a.split(" ")[a.split(" ").length-1];
-                            hx = hx.replace("{", ",");
-                            hx = hx.replace("}", ",");
+                            a = a.substring(3);
+                            String hx = a.trim();
+                            hx = hx.substring(1, hx.length()-1);
                             String[] hxs = hx.split(",");
                             int[] pol = new int[hxs.length];
-                            for(int i = 0; i < hxs.length; i++){
-                                pol[i] = Integer.parseInt(hxs[i]);
+                            
+                            if(hx.length() == 0){
+                                pol[0] = 0;
+                            } else {
+                                for(int i = 0; i < hxs.length; i++){
+                                    pol[i] = Integer.parseInt(hxs[i]);
+                                }
                             }
+                            
                             h = new Poly(pol, mod);
+                        }
+                        if(sc.hasNext()){
+                            a = sc.nextLine();
+                        
+                        } else {
+                        break;
                         }
                     }
                     
