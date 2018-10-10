@@ -15,17 +15,27 @@ public class LongDivision{
         
         Poly q = new Poly(new int[]{0},f.getMod());
         Poly tempPoly;
-        Poly r = f;
+        Poly r = new Poly(f.getPoly(), f.getMod());
         Poly divisionPoly;
         int division;
+        Poly zero = new Poly(new int[]{0}, f.getMod());
+        int gDegree = g.degree();
+        int rDegree = r.degree();
         
-        while (r.degree() >= g.degree() && !r.equals(0)) {
-            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.getMod());
-            division = r.leadingCoefficient().getVal()/f.leadingCoefficient().getVal();
-            divisionPoly = new Poly(new int[]{division},f.getMod());
-            q = q.add(tempPoly.multiply(divisionPoly));
-            tempPoly = new Poly(polyCreator(r.degree()-g.degree()),f.getMod());
-            r = r.subtract(g.multiply(tempPoly.multiply(divisionPoly)));
+        while (rDegree >= gDegree && !r.equals(zero)) {
+            
+            IntegerP rlc = r.leadingCoefficient();
+            IntegerP glc = g.leadingCoefficient();
+            division = (int) Math.ceil((double) rlc.getVal() / (double) glc.getVal());
+            //System.out.println("r: " + r.display());
+            //System.out.println("g: " + g.display());
+            tempPoly = new Poly(polyCreator(rDegree - gDegree), f.getMod()); // Array in Stijn's implementation is reversed!!!
+            //System.out.println("tempPol: " + tempPoly.display());
+            divisionPoly = tempPoly.multiply(new Poly(new int[]{division}, f.getMod()));
+            //System.out.println("divPol: " + divisionPoly.display());
+            q = q.add(divisionPoly);
+            r = r.subtract(g.multiply(divisionPoly));
+            rDegree = r.degree();
         }
         Poly[] result = new Poly[]{q,r};
         return result;
@@ -33,10 +43,10 @@ public class LongDivision{
         
     int[] polyCreator(int deg) {
         int[] result = new int[deg + 1];
-        for (int i = 0; i < deg; i++) {
+        /*for (int i = 0; i < deg; i++) {
             result[i] = 0;
-        }
-        result[deg] = 1;
+        }*/
+        result[0] = 1; //// Array in Stijn's implementation is reversed!!!
         return result;
     }
     
