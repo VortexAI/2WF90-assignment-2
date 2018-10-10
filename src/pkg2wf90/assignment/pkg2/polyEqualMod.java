@@ -17,7 +17,6 @@ public class polyEqualMod{
         f = division.run(f,h)[1];
         g = division.run(g,h)[1];
         
-        boolean result = f.equals(g);
-        return result;
+        return f.equals(g);
     }
 }

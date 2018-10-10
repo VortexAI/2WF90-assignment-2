@@ -22,8 +22,9 @@ public class ExtendedEuclid{
         Poly yPrime;
         Poly v = new Poly(new int[]{1},f.getMod());
         Poly u = new Poly(new int[]{0},f.getMod());
+        Poly zero = new Poly(new int[]{0}, f.getMod());
                
-        while (!g.equals(0)) {
+        while (!g.equals(zero)) {
             q = division.run(f,g)[0];
             r = division.run(f,g)[1];
             f = g;

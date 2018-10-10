@@ -142,17 +142,29 @@ public class Assignment2 {
                         
                         LongDivision div = new LongDivision();
                         Poly[] result = div.run(f, g);
-                        br.write("[answer-q] " + result[0].display() + System.getProperty("line.separator"));
-                        br.write("[answer-q] " + result[1].display() + System.getProperty("line.separator"));
+                        br.write("[answ-q] " + result[0].display() + System.getProperty("line.separator"));
+                        br.write("[answ-r] " + result[1].display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[euclid-poly]")){
                         
-                        ExtendedEuclid func = new ExtendedEuclid();
+                        ExtendedEuclid euc = new ExtendedEuclid();
+                        Poly[] result = euc.run(f, g);
+                        br.write("[answ-a] " + result[0].display() + System.getProperty("line.separator"));
+                        br.write("[answ-b] " + result[1].display() + System.getProperty("line.separator"));
+                        br.write("[answ-d] " + result[2].display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[equals-poly-mod]")){
                         
-                        polyEqualMod func = new polyEqualMod();
+                        polyEqualMod epm = new polyEqualMod();
+                        boolean result = epm.run(f, g, h);
+                        if (result) {
+                            br.write("[answer] " + "TRUE" + System.getProperty("line.separator"));
+                        } else {
+                            br.write("[answer] " + "FALSE" + System.getProperty("line.separator"));
+                        }
+                        br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[irreducible]")){
                         
