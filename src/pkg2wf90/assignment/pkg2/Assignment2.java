@@ -48,6 +48,7 @@ public class Assignment2 {
             if(a.startsWith("[mod]")){ 
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
+                int deg = 0;
                 a = a.replace("\t", " ");
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                 
@@ -108,6 +109,9 @@ public class Assignment2 {
                             }
                             
                             h = new Poly(pol, mod);
+                        } else if (a.startsWith("[deg]")) {
+                            a = a.replace("\t", " ");
+                            deg = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
                         }
                         if(sc.hasNext()){
                             a = sc.nextLine();
@@ -140,10 +144,16 @@ public class Assignment2 {
                         
                     } else if (Assignment.equals("[long-div-poly]")){
                         
-                        LongDivision div = new LongDivision();
-                        Poly[] result = div.run(f, g);
-                        br.write("[answ-q] " + result[0].display() + System.getProperty("line.separator"));
-                        br.write("[answ-r] " + result[1].display() + System.getProperty("line.separator"));
+                        Poly zero = new Poly(new int[]{0}, f.getMod());
+                        if (g.equals(zero)) {
+                            br.write("[answ-q] " + "ERROR" + System.getProperty("line.separator"));
+                            br.write("[answ-r] " + "ERROR" + System.getProperty("line.separator"));
+                        } else {
+                            LongDivision div = new LongDivision();
+                            Poly[] result = div.run(f, g);
+                            br.write("[answ-q] " + result[0].display() + System.getProperty("line.separator"));
+                            br.write("[answ-r] " + result[1].display() + System.getProperty("line.separator"));
+                        }
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[euclid-poly]")){
@@ -168,11 +178,21 @@ public class Assignment2 {
                         
                     } else if (Assignment.equals("[irreducible]")){
                         
-                        
+                        Irreducible irr = new Irreducible();
+                        boolean result = irr.run(f);
+                        if (result) {
+                            br.write("[answer] " + "TRUE" + System.getProperty("line.separator"));
+                        } else {
+                            br.write("[answer] " + "FALSE" + System.getProperty("line.separator"));
+                        }
+                        br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[find-irred]")){
                         
-                        
+                        FindIrreducible firr = new FindIrreducible();
+                        Poly result = firr.run(mod, deg); //Change to [deg]!
+                        br.write("[answer] " + result.display() + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
                         
                     }
                     

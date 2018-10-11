@@ -12,7 +12,7 @@ package pkg2wf90.assignment.pkg2;
 public class LongDivision{
     
     Poly[] run(Poly f, Poly g){
-        
+        // Add catch for g == 0, not needed, is done beforehand?
         Poly q = new Poly(new int[]{0},f.getMod());
         Poly tempPoly;
         Poly r = new Poly(f.getPoly(), f.getMod());

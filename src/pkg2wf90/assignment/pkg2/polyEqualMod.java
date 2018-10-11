@@ -12,6 +12,11 @@ package pkg2wf90.assignment.pkg2;
 public class polyEqualMod{
     
     boolean run(Poly f, Poly g, Poly h) {
+        // Add catch for h == 0
+        Poly zero = new Poly(new int[]{0}, f.getMod());
+        if (h.equals(zero)) {
+            return false;
+        }
         LongDivision division = new LongDivision();
         
         f = division.run(f,h)[1];

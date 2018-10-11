@@ -12,16 +12,22 @@ package pkg2wf90.assignment.pkg2;
 public class FindIrreducible {
     Irreducible irreducible = new Irreducible();
     Poly answer;
+    int[] random;
+    int mod;
+    int degree;
     
     Poly run(int mod, int degree) {
         // Add test whether degree n > 0?
-        int[] random = new int[degree + 1];
-        findIrr(random, 0, mod, degree);
+        random = new int[degree + 1];
+        this.mod = mod;
+        this.degree = degree;
+        findIrr(0);
         return answer;
     }
     
-    Boolean findIrr(int[] random, int i, int mod, int degree) {
+    Boolean findIrr(int i) {
         if (i == degree + 1) {
+            random = reverse(random); // fix stijn's fuckery!
             answer = new Poly(random, mod);
             return irreducible.run(answer);
         } else {
@@ -31,11 +37,19 @@ public class FindIrreducible {
             }
             for (int j = k; j < mod; j++) {
                 random[i] = j;
-                if (findIrr(random, i, mod, degree)) {
+                if (findIrr(i + 1)) {
                     return true;
                 }
             }
             return false;
         }
+    }
+    
+    int[] reverse(int[] a) {
+        int[] b = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            b[a.length - 1 - i] = a[i];
+        }
+        return b;
     }
 }

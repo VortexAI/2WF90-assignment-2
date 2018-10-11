@@ -25,8 +25,9 @@ public class ExtendedEuclid{
         Poly zero = new Poly(new int[]{0}, f.getMod());
                
         while (!g.equals(zero)) {
-            q = division.run(f,g)[0];
-            r = division.run(f,g)[1];
+            Poly[] div = division.run(f,g);
+            q = div[0];
+            r = div[1];
             f = g;
             g = r;
             xPrime = x;
@@ -34,9 +35,13 @@ public class ExtendedEuclid{
             x = u;
             y = v;
             u = xPrime.subtract(q.multiply(u));
-            v = yPrime.subtract(q.multiply(v));        
+            v = yPrime.subtract(q.multiply(v));
         }
-        Poly[] result = new Poly[]{x,y,f};
+        Poly constant = new Poly(new IntegerP[]{f.leadingCoefficient()}, f.getMod());
+        Poly[] result = new Poly[3]; 
+        result[0] = division.run(x, constant)[0];
+        result[1] = division.run(y, constant)[0];
+        result[2] = division.run(f, constant)[0];
         return result;
     }
     

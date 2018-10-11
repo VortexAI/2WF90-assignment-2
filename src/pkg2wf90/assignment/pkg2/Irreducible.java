@@ -23,9 +23,9 @@ public class Irreducible {
         while (true) {
             qt = q * qt;
             int[] temp = new int[qt + 1];
-            temp[qt] = 1;
-            temp[1] = temp[1] - 1;
-            Poly gcd = EE.run(f, new Poly(temp, q))[0];
+            temp[0] = 1; // Changed due to stijn's fuckery! Should be highest degree
+            temp[qt-1] = temp[qt-1] - 1; // Changed due to stijn's fuckery! Should be degree 1
+            Poly gcd = EE.run(f, new Poly(temp, q))[2]; // 2 should be gcd?
             if (!gcd.equals(polyOne)) {
                 break;
             }
