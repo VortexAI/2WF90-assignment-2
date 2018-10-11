@@ -9,6 +9,50 @@ package pkg2wf90.assignment.pkg2;
  *
  * @author s151810
  */
-public class FinField {
+public class FinField extends Poly {
     
+    Poly[] elements;
+    int[] pol;
+    int degree;
+    int mod;
+
+    FinField(int[] a, int mod){
+        super(a, mod);
+        degree = degree();
+        this.mod = mod;
+        int number = (int) Math.pow(this.mod, degree);
+        elements = new Poly[number];
+        pol = new int[degree];
+        generateElements(0, 0);    
+    }
+    
+    void generateElements(int i, int j) {
+        if (i == degree + 1) {
+            pol = reverse(pol); // fix stijn's fuckery!
+            elements[j] = new Poly(pol, mod);
+            j++;
+        } else {
+            for (int l = 0; l < mod; l++) {
+                pol[i] = l;
+                generateElements(i + 1, j);
+            }
+        }
+        
+    }
+    
+    int[] reverse(int[] a) {
+        int[] b = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            b[a.length - 1 - i] = a[i];
+        }
+        return b;
+    }
+    
+    Poly[] getElements() {
+        return elements;
+    }
+    
+    int getDegree() {
+        return degree;
+    }
 }
