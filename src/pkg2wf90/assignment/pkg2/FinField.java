@@ -15,6 +15,7 @@ public class FinField extends Poly {
     int[] pol;
     int degree;
     int mod;
+    int count;
 
     FinField(int[] a, int mod){
         super(a, mod);
@@ -22,18 +23,19 @@ public class FinField extends Poly {
         this.mod = mod;
         int number = (int) Math.pow(this.mod, degree);
         elements = new Poly[number];
-        pol = new int[degree+1];
-        generateElements(0, 0);    
+        pol = new int[degree];
+        count = 0;
+        generateElements(0);  
     }
     
-    void generateElements(int i, int j) {
-        if (i == degree + 1) {
-            elements[j] = new Poly(pol, mod);
-            j++;
+    void generateElements(int i) {
+        if (i == degree) {
+            elements[count] = new Poly(pol, mod);
+            count++;
         } else {
             for (int l = 0; l < mod; l++) {
                 pol[i] = l;
-                generateElements(i + 1, j);
+                generateElements(i + 1);
             }
         }
         
@@ -55,9 +57,9 @@ public class FinField extends Poly {
         return degree;
     }
     
-    Poly display(Poly f) {
+    String display(Poly f) {
         LongDivision div = new LongDivision();
-        return div.run(f, this)[1];
+        return div.run(f, this)[1].display();
     }
     
     Poly add (Poly f, Poly g) {
