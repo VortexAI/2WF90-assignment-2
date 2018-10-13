@@ -31,7 +31,7 @@ public class LongDivision{
             division = (int) Math.ceil((double) rlc.getVal() / (double) glc.getVal()); 
             
             // we create a polynomial of the correct degree after division
-            tempPoly = new Poly(polyCreator(rDegree - gDegree), f.getMod()); // Array in Stijn's implementation is reversed!!!
+            tempPoly = new Poly(polyCreator(rDegree - gDegree), f.getMod());
             
             // we combine the result of the division of the degree and lc's = t
             divisionPoly = tempPoly.multiply(new Poly(new int[]{division}, f.getMod()));
@@ -51,7 +51,7 @@ public class LongDivision{
      */    
     int[] polyCreator(int deg) {
         int[] result = new int[deg + 1];
-        result[0] = 1; //// Array in Stijn's implementation is reversed!!!
+        result[deg] = 1;
         return result;
     }
     

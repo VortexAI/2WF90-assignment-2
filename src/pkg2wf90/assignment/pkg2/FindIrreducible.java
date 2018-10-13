@@ -30,7 +30,6 @@ public class FindIrreducible {
     Boolean findIrr(int i) {
         // if random is completely filled in, then check whether random is irreducible
         if (i == degree + 1) {
-            random = reverse(random); // Array in Stijn's implementation is reversed!!!
             answer = new Poly(random, mod);
             return irreducible.run(answer);
         } else {
@@ -50,11 +49,5 @@ public class FindIrreducible {
             return false;
         }
     }
-    
-    /** Reverses the given array
-     * 
-     * @param a given array
-     * @return reversed array a
-     */
 
 }

@@ -23,8 +23,8 @@ public class Irreducible {
         while (true) {
             qt = q * qt;
             int[] temp = new int[qt + 1];
-            temp[0] = 1; // Array in Stijn's implementation is reversed!!! Should be highest degree
-            temp[qt-1] = temp[qt-1] - 1; // Array in Stijn's implementation is reversed!!! Should be degree 1
+            temp[qt] = 1; // Should be highest degree
+            temp[1] = temp[1] - 1; // -X
             Poly gcd = EE.run(f, new Poly(temp, q))[2]; // gcd(f, X^(q^t) - X) 
             
             // if gcd != 1
