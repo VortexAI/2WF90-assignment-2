@@ -231,7 +231,7 @@ public class Assignment2 {
                             if(first2){
                                 first2 = false;
                             } else {
-                                br.write(";");
+                                br.write("; ");
                             }
                             boolean first = true;
                             for(Poly b: d){
@@ -256,7 +256,7 @@ public class Assignment2 {
                             if(first2){
                                 first2 = false;
                             } else {
-                                br.write(";");
+                                br.write("; ");
                             }
                             boolean first = true;
                             for(Poly b: d){
