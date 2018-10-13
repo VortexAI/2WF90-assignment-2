@@ -10,7 +10,7 @@ public class Inverse {
         if (gcd.equals(one)) {
             return result[0];
         } else {
-            return new Poly(new int[]{0}, -1);
+            return new Poly(new int[]{0}, f.getMod());
         }
     }
 }
