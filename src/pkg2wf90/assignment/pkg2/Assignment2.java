@@ -199,6 +199,45 @@ public class Assignment2 {
                     
                 } else { //finite field operations
                     
+                    FinField field = null;
+                    
+                    a = Assignment.substring(3);
+                    String gx = a.trim();
+                    gx = gx.substring(1, gx.length()-1);
+                    String[] gxs = gx.split(",");
+                    int[] pol = new int[gxs.length];
+                    if(gx.length() == 0){
+                        pol[0] = 0;
+                    } else {
+                        for(int i = 0; i < gxs.length; i++){
+                            pol[i] = Integer.parseInt(gxs[i]);
+                        }
+                    }    
+                    field = new FinField(pol, mod);
+                    
+                    Assignment = sc.nextLine();
+                    
+                    if(Assignment.equals("[add-table]")){
+                        
+                    } else if(Assignment.equals("[mult-table]")){
+                        
+                    } else if(Assignment.equals("[display-field]")){
+                        
+                    } else if(Assignment.equals("[add-field]")){
+                        
+                    } else if(Assignment.equals("[subtract-field]")){
+                        
+                    } else if(Assignment.equals("[inverse-field]")){
+                        
+                    } else if(Assignment.equals("[division-field]")){
+                        
+                    } else if(Assignment.equals("[equals-field]")){
+                        
+                    } else if(Assignment.equals("[primitive]")){
+                        
+                    } else if(Assignment.equals("[find-prim]")){
+                        
+                    }
                 }
                 /*
                 if(func != null){
@@ -283,16 +322,7 @@ public class Assignment2 {
         
         br.flush();
     }
-    
-    //TODO
-    String displayPoly(Poly a){
-        boolean not0 = false;
-        String result = null;
-        
-        
-        
-        return result;
-    }
+
     
     /**
      * @param args the command line arguments
