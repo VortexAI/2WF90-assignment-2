@@ -287,7 +287,7 @@ public class Assignment2 {
                                 pol2[i] = Integer.parseInt(g2[i]);
                             }
                         } 
-                        pol2 = reverse(pol);
+                        pol2 = reverse(pol2);
                         Poly a1 = new Poly(pol2, mod);
                         
                         
