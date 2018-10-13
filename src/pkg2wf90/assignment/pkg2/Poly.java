@@ -17,7 +17,7 @@ public class Poly {
         this.mod = mod;
         poly = new IntegerP[a.length];
         for(int i = 0; i < a.length; i++){
-            poly[(a.length-1)-i] = new IntegerP(a[i], mod);
+            poly[i] = new IntegerP(a[i], mod);
         }
     }
     

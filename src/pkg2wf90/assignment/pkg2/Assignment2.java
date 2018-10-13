@@ -19,6 +19,8 @@ import java.util.Set;
  *
  * @author s151810
  */
+
+
 public class Assignment2 {
     
     final String[] polyFuncStrings = {"[display-poly]", "[add-poly]", 
@@ -78,6 +80,7 @@ public class Assignment2 {
                                     pol[i] = Integer.parseInt(fxs[i]);
                                 }
                             }
+                            pol = reverse(pol);
                             f = new Poly(pol, mod);
                         } else if (a.startsWith("[g]")){
                             a = a.substring(3);
@@ -92,6 +95,7 @@ public class Assignment2 {
                                     pol[i] = Integer.parseInt(gxs[i]);
                                 }
                             }
+                            pol = reverse(pol);
                             g = new Poly(pol, mod);
                         } else if (a.startsWith("[h]")){
                             a = a.substring(3);
@@ -107,7 +111,7 @@ public class Assignment2 {
                                     pol[i] = Integer.parseInt(hxs[i]);
                                 }
                             }
-                            
+                            pol = reverse(pol);
                             h = new Poly(pol, mod);
                         } else if (a.startsWith("[deg]")) {
                             a = a.replace("\t", " ");
@@ -198,7 +202,7 @@ public class Assignment2 {
                     
                     
                 } else { //finite field operations
-                    
+                    br.write(Assignment + System.getProperty("line.separator"));
                     FinField field = null;
                     
                     a = Assignment.substring(3);
@@ -216,11 +220,53 @@ public class Assignment2 {
                     field = new FinField(pol, mod);
                     
                     Assignment = sc.nextLine();
-                    
+                    br.write(Assignment + System.getProperty("line.separator"));
                     if(Assignment.equals("[add-table]")){
-                        
+                        br.write("[answer] ");
+                        AddTable tab = new AddTable();
+                        Poly[][] result = tab.run(field);
+                        br.write("{");
+                        boolean first2 = true;
+                        for(Poly[] d: result){
+                            if(first2){
+                                first2 = false;
+                            } else {
+                                br.write(";");
+                            }
+                            boolean first = true;
+                            for(Poly b: d){
+                                if(first){
+                                    br.write(b.display());
+                                    first = false;
+                                } else {
+                                    br.write(", " + b.display());
+                                }
+                            }
+                        }
+                        br.write("}");
                     } else if(Assignment.equals("[mult-table]")){
-                        
+                        br.write("[answer] ");
+                        MultTable tab = new MultTable();
+                        Poly[][] result = tab.run(field);
+                        br.write("{");
+                        boolean first2 = true;
+                        for(Poly[] d: result){
+                            if(first2){
+                                first2 = false;
+                            } else {
+                                br.write(";");
+                            }
+                            boolean first = true;
+                            for(Poly b: d){
+                                if(first){
+                                    br.write(b.display());
+                                    first = false;
+                                } else {
+                                    br.write(", " + b.display());
+                                }
+                            }
+                        }
+                        br.write("}");
                     } else if(Assignment.equals("[display-field]")){
                         
                     } else if(Assignment.equals("[add-field]")){
@@ -323,7 +369,13 @@ public class Assignment2 {
         br.flush();
     }
 
-    
+    int[] reverse(int[] a) {
+        int[] b = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            b[a.length - 1 - i] = a[i];
+        }
+        return b;
+    }
     /**
      * @param args the command line arguments
      */
