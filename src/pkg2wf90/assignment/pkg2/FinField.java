@@ -25,28 +25,20 @@ public class FinField extends Poly {
         elements = new Poly[number];
         pol = new int[degree];
         count = 0;
-        generateElements(0);  
+        generateElements(degree - 1);  
     }
     
     void generateElements(int i) {
-        if (i == degree) {
+        if (i == -1) {
             elements[count] = new Poly(pol, mod);
             count++;
         } else {
             for (int l = 0; l < mod; l++) {
                 pol[i] = l;
-                generateElements(i + 1);
+                generateElements(i - 1);
             }
         }
         
-    }
-    
-    int[] reverse(int[] a) {
-        int[] b = new int[a.length];
-        for (int i = 0; i < a.length; i++) {
-            b[a.length - 1 - i] = a[i];
-        }
-        return b;
     }
     
     Poly[] getElements() {
