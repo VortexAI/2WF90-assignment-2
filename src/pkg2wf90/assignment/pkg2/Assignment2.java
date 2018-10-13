@@ -280,7 +280,7 @@ public class Assignment2 {
                         g = g.substring(1, g.length()-1);
                         String[] g2 = g.split(",");
                         int[] pol2 = new int[g2.length];
-                        if(gx.length() == 0){
+                        if(g.length() == 0){
                             pol2[0] = 0;
                         } else {
                             for(int i = 0; i < g2.length; i++){
@@ -297,15 +297,120 @@ public class Assignment2 {
                         
                     } else if(Assignment.equals("[add-field]")){
                         
+                        String temp = sc.nextLine();
+                        br.write(temp + System.getProperty("line.separator"));
+                        a = temp.substring(3);
+                        String g = a.trim();
+                        g = g.substring(1, g.length()-1);
+                        String[] g2 = g.split(",");
+                        int[] pol2 = new int[g2.length];
+                        if(g.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < g2.length; i++){
+                                pol2[i] = Integer.parseInt(g2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a1 = new Poly(pol2, mod);
                         
+                        String temp2 = sc.nextLine();
+                        br.write(temp2 + System.getProperty("line.separator"));
+                        a = temp2.substring(3);
+                        String f = a.trim();
+                        f = f.substring(1, f.length()-1);
+                        String[] f2 = f.split(",");
+                        pol2 = new int[f2.length];
+                        if(f.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < f2.length; i++){
+                                pol2[i] = Integer.parseInt(f2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a2 = new Poly(pol2, mod);
+                        
+                        br.write("[answer] " + field.add(a1, a2).display() + System.getProperty("line.separator"));
                         
                         br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[subtract-field]")){
                         
+                        String temp = sc.nextLine();
+                        br.write(temp + System.getProperty("line.separator"));
+                        a = temp.substring(3);
+                        String g = a.trim();
+                        g = g.substring(1, g.length()-1);
+                        String[] g2 = g.split(",");
+                        int[] pol2 = new int[g2.length];
+                        if(g.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < g2.length; i++){
+                                pol2[i] = Integer.parseInt(g2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a1 = new Poly(pol2, mod);
+                        
+                        String temp2 = sc.nextLine();
+                        br.write(temp2 + System.getProperty("line.separator"));
+                        a = temp2.substring(3);
+                        String f = a.trim();
+                        f = f.substring(1, f.length()-1);
+                        String[] f2 = f.split(",");
+                        pol2 = new int[f2.length];
+                        if(f.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < f2.length; i++){
+                                pol2[i] = Integer.parseInt(f2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a2 = new Poly(pol2, mod);
+                        
+                        br.write("[answer] " + field.subtract(a1, a2).display() + System.getProperty("line.separator"));
                         
                         
                         br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[multiply-field]")){
+                        
+                        String temp = sc.nextLine();
+                        br.write(temp + System.getProperty("line.separator"));
+                        a = temp.substring(3);
+                        String g = a.trim();
+                        g = g.substring(1, g.length()-1);
+                        String[] g2 = g.split(",");
+                        int[] pol2 = new int[g2.length];
+                        if(g.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < g2.length; i++){
+                                pol2[i] = Integer.parseInt(g2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a1 = new Poly(pol2, mod);
+                        
+                        String temp2 = sc.nextLine();
+                        br.write(temp2 + System.getProperty("line.separator"));
+                        a = temp2.substring(3);
+                        String f = a.trim();
+                        f = f.substring(1, f.length()-1);
+                        String[] f2 = f.split(",");
+                        pol2 = new int[f2.length];
+                        if(f.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < f2.length; i++){
+                                pol2[i] = Integer.parseInt(f2[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol2);
+                        Poly a2 = new Poly(pol2, mod);
+                        
+                        br.write("[answer] " + field.multiply(a1, a2).display() + System.getProperty("line.separator"));
                         
                         
                         br.write(System.getProperty("line.separator"));
