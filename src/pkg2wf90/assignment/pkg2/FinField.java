@@ -75,10 +75,4 @@ public class FinField extends Poly {
         return div.run(f.multiply(g), this)[1];
     }
     
-    Poly[] divide (Poly f, Poly g) {
-        LongDivision div = new LongDivision();
-        Poly one = div.run(f, this)[1];
-        Poly two = div.run(g, this)[1];
-        return div.run(one, two);
-    }
 }
