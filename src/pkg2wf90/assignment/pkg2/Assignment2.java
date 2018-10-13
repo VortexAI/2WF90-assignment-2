@@ -48,7 +48,6 @@ public class Assignment2 {
             String a = sc.nextLine();
             //starts whenever a string is found starting with [radix]
             if(a.startsWith("[mod]")){ 
-                br.write("this still works");
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
                 int deg = 0;
@@ -59,7 +58,6 @@ public class Assignment2 {
                 br.write(Assignment + System.getProperty("line.separator"));
                 
                 if(!Assignment.startsWith("[mod-poly]")){//polynomial opperations
-                    br.write("not mod poly");
                     Poly f = null;
                     Poly g = null;
                     Poly h = null;
@@ -203,7 +201,6 @@ public class Assignment2 {
                     
                     
                 } else { //finite field operations
-                    br.write(Assignment + System.getProperty("line.separator"));
                     FinField field = null;
                     
                     a = Assignment.substring(10);
@@ -223,7 +220,7 @@ public class Assignment2 {
                     field = new FinField(pol, mod);
                     
                     Assignment = sc.nextLine();
-                    br.write(Assignment + System.getProperty("line.separator") + "yes this works");
+                    br.write(Assignment + System.getProperty("line.separator"));
                     if(Assignment.equals("[add-table]")){
                         br.write("[answer] ");
                         AddTable tab = new AddTable();
@@ -247,6 +244,8 @@ public class Assignment2 {
                             }
                         }
                         br.write("}" + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if(Assignment.equals("[mult-table]")){
                         br.write("[answer] ");
                         MultTable tab = new MultTable();
@@ -270,20 +269,22 @@ public class Assignment2 {
                             }
                         }
                         br.write("}" + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if(Assignment.equals("[display-field]")){
                         
                         String temp = sc.nextLine();
                         br.write(temp + System.getProperty("line.separator"));
                         a = temp.substring(3);
                         String g = a.trim();
-                        gx = gx.substring(1, gx.length()-1);
+                        g = g.substring(1, g.length()-1);
                         String[] g2 = g.split(",");
                         int[] pol2 = new int[g2.length];
                         if(gx.length() == 0){
                             pol2[0] = 0;
                         } else {
-                            for(int i = 0; i < gxs.length; i++){
-                                pol2[i] = Integer.parseInt(gxs[i]);
+                            for(int i = 0; i < g2.length; i++){
+                                pol2[i] = Integer.parseInt(g2[i]);
                             }
                         } 
                         pol2 = reverse(pol);
@@ -292,120 +293,48 @@ public class Assignment2 {
                         
                         
                         br.write("[answer] " + field.display(a1) + System.getProperty("line.separator"));
-
+                        br.write(System.getProperty("line.separator"));
+                        
                     } else if(Assignment.equals("[add-field]")){
                         
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[subtract-field]")){
                         
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[multiply-field]")){
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[inverse-field]")){
                         
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[division-field]")){
                         
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[equals-field]")){
                         
                         
                         
-                        
+                        br.write(System.getProperty("line.separator"));
                     } else if(Assignment.equals("[primitive]")){
+                        
+                        
+                        br.write(System.getProperty("line.separator"));
                         
                     } else if(Assignment.equals("[find-prim]")){
                         
+                        br.write(System.getProperty("line.separator"));
                     }
                 }
-                /*
-                if(func != null){
-                    br.write(Assignment + System.getProperty("line.separator"));
-                    a = sc.nextLine();
-                    //While loop that checks for parameters x, y and m. Stops when
-                    //no lines are left to be examined.
-                    while(!sc.hasNext() || !a.trim().isEmpty()){
-                        if(a.startsWith("[x]")){
-                            String[] xl = a.split(" ");
-                            x = xl[xl.length-1];
-                            br.write(a + System.getProperty("line.separator"));
-                        }
-                        if(a.startsWith("[y]")){
-                            String[] yl = a.split(" ");
-                            y = yl[yl.length-1];
-                            br.write(a + System.getProperty("line.separator"));
-                        }
-                        if(a.startsWith("[m]")){
-                            String[] m1 = a.split(" ");
-                            m = m1[m1.length-1];
-                            br.write(a + System.getProperty("line.separator"));
-                        }
-                        if(sc.hasNext()){
-                            a = sc.nextLine();
-                        
-                        } else {
-                        break;
-                        }
-                    }
                 
-                
-                
-                
-                    
-                    //intialize the required numbers
-                    Number num1 = new Number(x, radix, !x.startsWith("-"));
-                    Number num2 = null;
-                    Number numM = null;
-                    if (y != null){
-                        num2 = new Number(y, radix, !y.startsWith("-"));
-                    }
-                    
-                    if (m != null){
-                        numM = new Number(m, radix, !m.startsWith("-"));
-                    }
-                
-                    //write all results
-                    try {
-                        num3 = func.run(num1, num2, numM);
-                        //done for all functions except euclid
-                        if(!(func.getClass()== Euclid.class)){
-                            br.write("[answer] ");
-                            for(char d: num3.getChars()){
-                                br.write(d);
-                            }
-                            br.write(System.getProperty("line.separator"));
-                        }
-                
-                        //only done for primary school multiplication and
-                        //karatsuba
-                        if((func.getClass() == EzMult.class)||(func.getClass() == Karatsuba.class)){
-                            br.write("[count-add] " + num3.getCountAdd() + System.getProperty("line.separator"));
-                            br.write("[count-mul] " + num3.getCountMult() + System.getProperty("line.separator"));
-                        }
-                        
-                        //only done for euclid
-                        if(func.getClass() == Euclid.class){
-                            br.write("[answer-d] " + new String(num3.getD().getChars()) + System.getProperty("line.separator"));
-                            
-                            br.write("[answer-a] " + new String(num3.getA().getChars()) + System.getProperty("line.separator"));
-                            br.write("[answer-b] " + new String(num3.getB().getChars()) + System.getProperty("line.separator"));
-                        }
-                    } catch (Exception e) {
-                        br.write("exception " + e + " thrown");
-                    } 
-                
-                    br.write(System.getProperty("line.separator"));
-                } */
             }
         }
         
