@@ -48,6 +48,7 @@ public class Assignment2 {
             String a = sc.nextLine();
             //starts whenever a string is found starting with [radix]
             if(a.startsWith("[mod]")){ 
+                br.write("this still works");
                 br.write(a + System.getProperty("line.separator"));
                 int mod = 0;
                 int deg = 0;
@@ -57,8 +58,8 @@ public class Assignment2 {
                 String Assignment = sc.nextLine();
                 br.write(Assignment + System.getProperty("line.separator"));
                 
-                if(!Assignment.equals("[mod-poly]")){//polynomial opperations
-                    
+                if(!Assignment.startsWith("[mod-poly]")){//polynomial opperations
+                    br.write("not mod poly");
                     Poly f = null;
                     Poly g = null;
                     Poly h = null;
@@ -205,7 +206,8 @@ public class Assignment2 {
                     br.write(Assignment + System.getProperty("line.separator"));
                     FinField field = null;
                     
-                    a = Assignment.substring(3);
+                    a = Assignment.substring(10);
+                    
                     String gx = a.trim();
                     gx = gx.substring(1, gx.length()-1);
                     String[] gxs = gx.split(",");
@@ -221,7 +223,7 @@ public class Assignment2 {
                     field = new FinField(pol, mod);
                     
                     Assignment = sc.nextLine();
-                    br.write(Assignment + System.getProperty("line.separator"));
+                    br.write(Assignment + System.getProperty("line.separator") + "yes this works");
                     if(Assignment.equals("[add-table]")){
                         br.write("[answer] ");
                         AddTable tab = new AddTable();
@@ -244,7 +246,7 @@ public class Assignment2 {
                                 }
                             }
                         }
-                        br.write("}");
+                        br.write("}" + System.getProperty("line.separator"));
                     } else if(Assignment.equals("[mult-table]")){
                         br.write("[answer] ");
                         MultTable tab = new MultTable();
@@ -267,18 +269,58 @@ public class Assignment2 {
                                 }
                             }
                         }
-                        br.write("}");
+                        br.write("}" + System.getProperty("line.separator"));
                     } else if(Assignment.equals("[display-field]")){
                         
+                        String temp = sc.nextLine();
+                        br.write(temp + System.getProperty("line.separator"));
+                        a = temp.substring(3);
+                        String g = a.trim();
+                        gx = gx.substring(1, gx.length()-1);
+                        String[] g2 = g.split(",");
+                        int[] pol2 = new int[g2.length];
+                        if(gx.length() == 0){
+                            pol2[0] = 0;
+                        } else {
+                            for(int i = 0; i < gxs.length; i++){
+                                pol2[i] = Integer.parseInt(gxs[i]);
+                            }
+                        } 
+                        pol2 = reverse(pol);
+                        Poly a1 = new Poly(pol2, mod);
+                        
+                        
+                        
+                        br.write("[answer] " + field.display(a1) + System.getProperty("line.separator"));
+
                     } else if(Assignment.equals("[add-field]")){
+                        
+                        
+                        
                         
                     } else if(Assignment.equals("[subtract-field]")){
                         
+                        
+                        
+                        
+                    } else if(Assignment.equals("[multiply-field]")){
+                        
+                        
+                        
                     } else if(Assignment.equals("[inverse-field]")){
+                        
+                        
+                        
                         
                     } else if(Assignment.equals("[division-field]")){
                         
+                        
+                        
+                        
                     } else if(Assignment.equals("[equals-field]")){
+                        
+                        
+                        
                         
                     } else if(Assignment.equals("[primitive]")){
                         

@@ -22,13 +22,12 @@ public class FinField extends Poly {
         this.mod = mod;
         int number = (int) Math.pow(this.mod, degree);
         elements = new Poly[number];
-        pol = new int[degree];
+        pol = new int[degree+1];
         generateElements(0, 0);    
     }
     
     void generateElements(int i, int j) {
         if (i == degree + 1) {
-            pol = reverse(pol); // fix stijn's fuckery!
             elements[j] = new Poly(pol, mod);
             j++;
         } else {
