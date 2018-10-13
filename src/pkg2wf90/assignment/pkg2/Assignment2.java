@@ -216,7 +216,8 @@ public class Assignment2 {
                         for(int i = 0; i < gxs.length; i++){
                             pol[i] = Integer.parseInt(gxs[i]);
                         }
-                    }    
+                    } 
+                    pol = reverse(pol);
                     field = new FinField(pol, mod);
                     
                     Assignment = sc.nextLine();
