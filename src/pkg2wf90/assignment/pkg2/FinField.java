@@ -55,4 +55,31 @@ public class FinField extends Poly {
     int getDegree() {
         return degree;
     }
+    
+    Poly display(Poly f) {
+        LongDivision div = new LongDivision();
+        return div.run(f, this)[1];
+    }
+    
+    Poly add (Poly f, Poly g) {
+        LongDivision div = new LongDivision();
+        return div.run(f.add(g), this)[1];
+    }
+    
+    Poly subtract (Poly f, Poly g) {
+        LongDivision div = new LongDivision();
+        return div.run(f.subtract(g), this)[1];
+    }
+    
+    Poly multiply (Poly f, Poly g) {
+        LongDivision div = new LongDivision();
+        return div.run(f.multiply(g), this)[1];
+    }
+    
+    Poly[] divide (Poly f, Poly g) {
+        LongDivision div = new LongDivision();
+        Poly one = div.run(f, this)[1];
+        Poly two = div.run(g, this)[1];
+        return div.run(one, two);
+    }
 }

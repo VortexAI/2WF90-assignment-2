@@ -10,7 +10,7 @@ public class AddTable {
         
         for (int i = 0; i < elements.length; i++) {
             for (int j = 0; j < elements.length; j++) {
-                result[i][j] = div.run(elements[i].add(elements[j]), f)[1];
+                result[i][j] = f.add(elements[i], elements[j]);;
             }
         }
         return result;
