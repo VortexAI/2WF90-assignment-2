@@ -10,9 +10,11 @@ package pkg2wf90.assignment.pkg2;
  * @author s151810
  */
 public class IntegerP {
+    //integer value of IntegerP and modulo value
     private int val;
     private int mod;
     
+    //constructor given some value and mod
     IntegerP(int val, int mod){
         if((val%mod <0)){
             this.val = (val%mod)+mod;
@@ -23,6 +25,10 @@ public class IntegerP {
         }
     }
     
+    /**
+     * returns val
+     * @return val
+     */
     int getVal(){
         return val;
     }
@@ -51,6 +57,10 @@ public class IntegerP {
         return new IntegerP(this.val * val2.getVal(), mod);
     }
     
+    /**
+     * returns integer mod
+     * @return mod
+     */
     int getMod(){
         return mod;
     }

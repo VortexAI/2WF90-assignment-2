@@ -58,10 +58,11 @@ public class Assignment2 {
                 br.write(Assignment + System.getProperty("line.separator"));
                 
                 if(!Assignment.startsWith("[mod-poly]")){//polynomial opperations
+                    // polynomials used in the operations
                     Poly f = null;
                     Poly g = null;
                     Poly h = null;
-                    
+                    //scan all polynomials required for all operations
                     a = sc.nextLine();
                     while(!sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[f]")){
@@ -129,27 +130,28 @@ public class Assignment2 {
                     
                     
                     if(Assignment.equals("[display-poly]")){
-                        
+                        //display poly
                         br.write("[answer] " + f.display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[add-poly]")){
-                        
+                        //add poly
                         br.write("[answer] " + (f.add(g)).display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[subtract-poly]")){
-                        
+                        //execute subtract poly
                         br.write("[answer] " + (f.subtract(g)).display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[multiply-poly]")){
-                        
+                        //execute multiply poly
                         br.write("[answer] " + (f.multiply(g)).display() + System.getProperty("line.separator"));
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[long-div-poly]")){
-                        
+                        //execute long division a polynomial zero is given to 
+                        //be able to compare to zero
                         Poly zero = new Poly(new int[]{0}, f.getMod());
                         if (g.equals(zero)) {
                             br.write("[answ-q] " + "ERROR" + System.getProperty("line.separator"));
@@ -163,7 +165,7 @@ public class Assignment2 {
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[euclid-poly]")){
-                        
+                        //execute eulcids algorithm
                         ExtendedEuclid euc = new ExtendedEuclid();
                         Poly[] result = euc.run(f, g);
                         br.write("[answ-a] " + result[0].display() + System.getProperty("line.separator"));
@@ -172,7 +174,7 @@ public class Assignment2 {
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[equals-poly-mod]")){
-                        
+                        //check if the polynomials are equal modulo some integer
                         polyEqualMod epm = new polyEqualMod();
                         boolean result = epm.run(f, g, h);
                         if (result) {
@@ -183,7 +185,7 @@ public class Assignment2 {
                         br.write(System.getProperty("line.separator"));
                         
                     } else if (Assignment.equals("[irreducible]")){
-                        
+                        //check if the provided polynomial is irreducible
                         Irreducible irr = new Irreducible();
                         boolean result = irr.run(f);
                         if (result) {
@@ -204,10 +206,12 @@ public class Assignment2 {
                     
                     
                 } else { //finite field operations
+                    //finite field that is used for all arithmatic
                     FinField field = null;
                     
                     a = Assignment.substring(10);
                     
+                    //get the mod-poly and init the finite field
                     String zx = a.trim();
                     zx = zx.substring(1, zx.length()-1);
                     String[] zxs = zx.split(",");
@@ -223,8 +227,6 @@ public class Assignment2 {
                     field = new FinField(pol, mod);
                     
                     
-                    
-                    
                     Assignment = sc.nextLine();
 
                     br.write(Assignment + System.getProperty("line.separator"));
@@ -232,7 +234,7 @@ public class Assignment2 {
                     Poly f = null;
                     Poly g = null;
                     Poly h = null;
-                    
+                    //check all polys and initilize the poly objects
                     a = sc.nextLine();
                     while(!sc.hasNext() || !a.trim().isEmpty()){
                         if(a.startsWith("[a]")){
@@ -298,6 +300,7 @@ public class Assignment2 {
                         }
                     }
                     
+                    //all functions applied for the finite field arithmatic
                     if(Assignment.equals("[add-table]")){
                         br.write("[answer] ");
                         AddTable tab = new AddTable();
@@ -418,7 +421,12 @@ public class Assignment2 {
         
         br.flush();
     }
-
+    
+    /**
+     * reverses the provided integer array
+     * @param a
+     * @return 
+     */
     int[] reverse(int[] a) {
         int[] b = new int[a.length];
         for (int i = 0; i < a.length; i++) {

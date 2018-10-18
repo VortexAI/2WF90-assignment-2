@@ -10,9 +10,12 @@ package pkg2wf90.assignment.pkg2;
  * @author s151810
  */
 public class Poly {
+    
+    //the integerP array representing the polynomial and an integer mod
     private IntegerP[] poly;
     private int mod;
     
+    //cosntructor that takes an integerP array and a mod
     Poly(int[] a, int mod){
         this.mod = mod;
         poly = new IntegerP[a.length];
@@ -21,15 +24,25 @@ public class Poly {
         }
     }
     
+    //constructor that takes an integerP array and a mod
     Poly(IntegerP[] poly, int mod){
         this.poly = poly;
         this.mod = mod;
     }
     
+    /**
+     * returns the integer array representing the polynomial
+     * @return {@code poly}
+     */
     public IntegerP[] getPoly(){
         return poly;
     }
     
+    /**
+     * adds polynomial g to this polynomial
+     * @param g polynomial to be added
+     * @return {@code temp} 
+     */
     Poly add(Poly g){
         IntegerP[] temp;
         
@@ -51,7 +64,13 @@ public class Poly {
         return new Poly(temp, mod);
     }
     
+    /**
+     * subtracts polynomial g to this polynomial
+     * @param g polynomial to be subtracted
+     * @return {@code temp}
+     */
     Poly subtract(Poly g){
+        
         IntegerP[] temp;
         
         if(g.getPoly().length > this.poly.length){
@@ -72,6 +91,11 @@ public class Poly {
         return new Poly(temp, mod);
     }
     
+    /**
+     * multiplies polynomial g with this polynomial
+     * @param g polynomial to be multiplied with
+     * @return {@code temp}
+     */
     Poly multiply(Poly g){
         IntegerP[] temp = new IntegerP[1+g.degree()+this.degree()];
         for(int i = 0; i<temp.length;i++){
@@ -89,11 +113,18 @@ public class Poly {
         return new Poly(temp, mod);
     }
     
-    //TODO
+    /**
+     * returns the leading coefficient of this poly
+     * @return poly[this.degree()]
+     */
     IntegerP leadingCoefficient(){
         return poly[this.degree()];
     }
     
+    /**
+     * function that returns the degree of this polynomial
+     * @return result
+     */
     int degree(){
         int result = 0;
         for(int i = poly.length-1; i>0; i--){
@@ -105,6 +136,11 @@ public class Poly {
         return result;
     }
     
+    /**
+     * returns whether this polynomial is equal to g
+     * @param g polynomial to be compared with
+     * @return g == this.poly
+     */
     Boolean equals(Poly g){
         int degG = g.degree();
         if(g.degree() != this.degree()){
@@ -118,10 +154,18 @@ public class Poly {
         return true;
     }
     
+    /**
+     * returns mod
+     * @return mod
+     */
     int getMod(){
         return mod;
     }
     
+    /**
+     * returns the string representing this polynomial
+     * @return result
+     */
     String display(){
         int deg = degree();
         boolean firstNotNull = false;
