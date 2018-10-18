@@ -384,12 +384,15 @@ public class Assignment2 {
                     } else if(Assignment.equals("[inverse-field]")){
                         
                         Inverse inverse = new Inverse();
-                        
-                        
-                        
-                        br.write("[answer] " + inverse.run(field, f).display() + System.getProperty("line.separator"));
-                        
+                        Poly result = inverse.run(field, f);
+                        Poly zero = new Poly(new int[]{0}, field.getMod());
+                        if (result.equals(zero)) {
+                            br.write("[answer] " + "ERROR" + System.getProperty("line.separator"));
+                        } else {
+                            br.write("[answer] " + result.display() + System.getProperty("line.separator"));
+                        }                
                         br.write(System.getProperty("line.separator"));
+                        
                     } else if(Assignment.equals("[division-field]")){
                         
                         br.write(System.getProperty("line.separator"));
