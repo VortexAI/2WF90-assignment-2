@@ -13,6 +13,7 @@ public class FinFieldDivision {
     * @param f The first polynomial
     * @param g The second polynomial
     * @param field The given finite field
+    * @return polynomial result of the division
     */
     public Poly run(Poly f, Poly g, FinField field) {
         // compute division f/g by multiplying f by the inverse of g
