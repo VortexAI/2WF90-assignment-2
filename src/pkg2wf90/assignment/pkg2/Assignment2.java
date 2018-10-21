@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import javax.crypto.Mac;
 
 /**
  *
@@ -53,7 +54,11 @@ public class Assignment2 {
                 int deg = 0;
                 a = a.replace("\t", " ");
                 mod = Integer.parseInt(a.split(" ")[a.split(" ").length-1]);
-                
+                if(!isPrime(mod)){
+                    br.write("provided mod was not prime" + System.getProperty("line.separator"));
+                    br.write(System.getProperty("line.separator"));
+                    break;
+                }
                 String Assignment = sc.nextLine();
                 br.write(Assignment + System.getProperty("line.separator"));
                 
@@ -437,6 +442,26 @@ public class Assignment2 {
         }
         return b;
     }
+    
+    /**
+     * checks if the provided integer is prime or not
+     * @param p integer that needs to be checked on being prime
+     * @return true if p is prime, false otherwise
+     */
+    
+    boolean isPrime(int p){
+        int limit = (int) Math.floor(Math.sqrt(p));
+        if((p%2) == 0){
+            return false;
+        }
+        for(int i = 3; i <= limit ; i = i+2){
+            if((p % i) == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     /**
      * @param args the command line arguments
      */
