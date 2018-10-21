@@ -400,6 +400,14 @@ public class Assignment2 {
                         
                     } else if(Assignment.equals("[division-field]")){
                         
+                        FinFieldDivision division = new FinFieldDivision();
+                        Poly zero = new Poly(new int[] {0}, field.getMod());
+                        Poly result = division.run(f, g, field);
+                        if (result.equals(zero)) {
+                            br.write("[answer] " + "ERROR" + System.getProperty("line.separator"));
+                        } else {
+                            br.write("[answer] " + result.display() + System.getProperty("line.separator"));
+                        }   
                         br.write(System.getProperty("line.separator"));
                         
                     } else if(Assignment.equals("[equals-field]")){
