@@ -47,19 +47,19 @@ public class Assignment2 {
             String a = sc.nextLine();
             //starts whenever a string is found starting with [radix]
             if (a.startsWith("[mod]")) {
-                br.write(a + System.getProperty("line.separator"));
-                int mod = 0;
-                int deg = 0;
-                a = a.replace("\t", " ");
-                mod = Integer.parseInt(a.split(" ")[a.split(" ").length - 1]);
-                if (!isPrime(mod)) {
-                    br.write("provided mod was not prime" + System.getProperty("line.separator"));
-                    br.write(System.getProperty("line.separator"));
-                    continue;
-                }
-                String Assignment = sc.nextLine();
-                br.write(Assignment + System.getProperty("line.separator"));
                 try {
+                    br.write(a + System.getProperty("line.separator"));
+                    int mod = 0;
+                    int deg = 0;
+                    a = a.replace("\t", " ");
+                    mod = Integer.parseInt(a.split(" ")[a.split(" ").length - 1]);
+                    if (!isPrime(mod)) {
+                        br.write("provided mod was not prime" + System.getProperty("line.separator"));
+                        br.write(System.getProperty("line.separator"));
+                        continue;
+                    }
+                    String Assignment = sc.nextLine();
+                    br.write(Assignment + System.getProperty("line.separator"));
                     if (!Assignment.startsWith("[mod-poly]")) {//polynomial opperations
                         // polynomials used in the operations
                         Poly f = null;
