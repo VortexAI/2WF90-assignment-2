@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */;
 package pkg2wf90.assignment.pkg2;
- 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,29 +13,46 @@ import java.util.List;
  * @author stijn
  */
 public class CheckPrimitive {
-
+    Poly fieldPoly;
+    
     public boolean run(FinField f, Poly input){
-        int q = f.getDegree();
+        fieldPoly = new Poly(f.getPoly(),7);
+        int q = f.getElements().length;
+       
+        IntegerP[] poly = input.getPoly();
+
+        boolean zero = true;
+
+        for(int i=0; i < poly.length; i++){
+            if(poly[i].getVal() != 0){
+                zero = false;
+                break;
+            }
+        }
+
+        if(zero){           
+            return false;
+        }
+
 
         Poly a = input;
         Poly one = new Poly(new int[]{1}, f.getMod());
 
         List<Integer> primeDivisors = new ArrayList<>();
         boolean isPrime = true;
-            for(int i=2; i<q; i++){
-
-                if((q-1)%i == 0){
-
-                    for(int j = 2; j <= i; j++){
-                        if(i%j == 0){
-                            if(i!=j) {
-                                isPrime = false;
-                            }
+        for(int i=2; i<q; i++){
+            if((q-1)%i == 0){
+                for(int j = 2; j <= i; j++){
+                    if(i%j == 0){
+                        if(i!=j) {
+                            isPrime = false;
                         }
                     }
-                    if(isPrime){
-                        primeDivisors.add(i);
-                    }
+                }
+                if(isPrime){
+                   
+                    primeDivisors.add(i);
+                }
             }
         }
 
@@ -48,23 +65,24 @@ public class CheckPrimitive {
             }
         }
 
-        if(i < primeDivisors.size()){
+        if(i <= primeDivisors.size()){
             return false;
         } else{
             return true;
         }
-
-
     }
 
     public Poly toThePower(Poly a, int exponent, int mod){
+       
         Poly power = new Poly(a.getPoly(), mod);
+        LongDivision division = new LongDivision();
+
 
         for(int i=0; i<exponent-1; i++){
-            power = power.multiply(a);
-        }
-
-
+            power = division.run(power.multiply(a), fieldPoly)[1];
+        } 
+        //Poly powerMod = division.run(power, fieldPoly)[1];
+       
         return power;
     }
 }
