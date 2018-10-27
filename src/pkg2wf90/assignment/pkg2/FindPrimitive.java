@@ -12,7 +12,8 @@ package pkg2wf90.assignment.pkg2;
 
 public class FindPrimitive {
     CheckPrimitive cp = new CheckPrimitive();
-
+    
+    //Loop over all elements of the field and check if they are primitive
     public String run(FinField f){
         Poly[] elements = f.getElements();
         for(int i=0; i < elements.length;i++){
@@ -20,6 +21,7 @@ public class FindPrimitive {
                 return elements[i].display();
             }
         }
+        //Return ERROR is no primitive found
         return "ERROR";
     }
 
