@@ -407,11 +407,21 @@ public class Assignment2 {
                             br.write(System.getProperty("line.separator"));
 
                         } else if (Assignment.equals("[primitive]")) {
-
+                            CheckPrimitive cp = new CheckPrimitive();
+                            boolean result = cp.run(field, f);
+                            
+                            if (result) {
+                                br.write("[answer] " + "TRUE" + System.getProperty("line.separator"));
+                            } else {
+                                br.write("[answer] " + "FALSE" + System.getProperty("line.separator"));
+                            }
                             br.write(System.getProperty("line.separator"));
 
                         } else if (Assignment.equals("[find-prim]")) {
-
+                            FindPrimitive fp = new FindPrimitive();
+                            String result = fp.run(field);
+                            br.write("[answer] " + result  + System.getProperty("line.separator"));
+                           
                             br.write(System.getProperty("line.separator"));
                         }
                     }
